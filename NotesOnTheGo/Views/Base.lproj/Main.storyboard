@@ -98,6 +98,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Tag" id="Vkt-l7-MCt">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ORC-ed-YxE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yZh-Oa-NZq">
+                            <connections>
+                                <action selector="addNewNote:" destination="MsN-kf-D2m" id="D00-GM-Af5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="de4-92-nB8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
