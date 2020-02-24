@@ -10,7 +10,7 @@ import UIKit
 
 class CategoriesViewController: UICollectionViewController {
     
-    let categoriesArray = ["Compras", "Tareas De La Casa", "Ocio"]
+    let categoriesArray = ["Compras", "Quedada", "Ocio"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

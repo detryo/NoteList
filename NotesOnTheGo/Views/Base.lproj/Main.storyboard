@@ -25,7 +25,7 @@
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="S6c-1D-Yjc" customClass="CategoryCollectionViewCell" customModule="NotesOnTheGo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZWR-G6-7br">
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hhh-eD-jmT">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -43,13 +43,13 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="LFL-Sm-Nmk" firstAttribute="leading" secondItem="ZWR-G6-7br" secondAttribute="leading" id="CTH-pM-JDP"/>
+                                        <constraint firstItem="LFL-Sm-Nmk" firstAttribute="leading" secondItem="hhh-eD-jmT" secondAttribute="leading" id="CTH-pM-JDP"/>
                                         <constraint firstItem="SYq-jU-BKg" firstAttribute="top" secondItem="LFL-Sm-Nmk" secondAttribute="bottom" id="G5c-qu-J2R"/>
                                         <constraint firstAttribute="bottom" secondItem="SYq-jU-BKg" secondAttribute="bottom" id="HeO-ek-C08"/>
-                                        <constraint firstItem="SYq-jU-BKg" firstAttribute="leading" secondItem="ZWR-G6-7br" secondAttribute="leading" id="SUs-4t-hl1"/>
+                                        <constraint firstItem="SYq-jU-BKg" firstAttribute="leading" secondItem="hhh-eD-jmT" secondAttribute="leading" id="SUs-4t-hl1"/>
                                         <constraint firstAttribute="trailing" secondItem="SYq-jU-BKg" secondAttribute="trailing" id="dWp-YJ-cLk"/>
                                         <constraint firstAttribute="trailing" secondItem="LFL-Sm-Nmk" secondAttribute="trailing" id="mL9-Q3-5qS"/>
-                                        <constraint firstItem="LFL-Sm-Nmk" firstAttribute="top" secondItem="ZWR-G6-7br" secondAttribute="top" id="r0v-HN-qoR"/>
+                                        <constraint firstItem="LFL-Sm-Nmk" firstAttribute="top" secondItem="hhh-eD-jmT" secondAttribute="top" id="r0v-HN-qoR"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="200" height="200"/>
