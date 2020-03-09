@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NotesTableViewController: UITableViewController {
     
@@ -14,24 +15,12 @@ class NotesTableViewController: UITableViewController {
 
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Notes.plist")
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
-       /* if let previousNote = defaults.array(forKey: "NotesArray") as? [Note] {
-            self.notesArray = previousNote
-        } */
-        
-        let firstNote = Note()
-        firstNote.title = "Ir a por pan"
-        notesArray.append(firstNote)
-        
-        let secondNote = Note()
-        secondNote.title = "Comprar Huevos"
-        notesArray.append(secondNote)
-        
-        let thirdNote = Note()
-        thirdNote.title = "Leche"
-        notesArray.append(thirdNote)
+        loadNotes()
     }
 
     // MARK: - Table view data source
@@ -69,7 +58,7 @@ class NotesTableViewController: UITableViewController {
         
         persistNotes()
         
-        tableView.cellForRow(at: indexPath)?.accessoryType = (note.checked ? .checkmark : .none)
+      // tableView.cellForRow(at: indexPath)?.accessoryType = (note.checked ? .checkmark : .none)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -82,7 +71,7 @@ class NotesTableViewController: UITableViewController {
         let controller = UIAlertController(title: "Implement New Note", message: "", preferredStyle: .alert)
         let addAction = UIAlertAction(title: "Implement Item", style: .default) { (action) in
             
-            let note = Note()
+            let note = Note(context: self.context)
             note.title = textField.text!
             self.notesArray.append(note)
             self.tableView.reloadData()
@@ -102,18 +91,48 @@ class NotesTableViewController: UITableViewController {
         
         present(controller, animated: true, completion: nil)
     }
-    
     // MARK: - Data Persistence And Manipulation
     
+    // Save Notes
     func persistNotes() {
         
-        let encoder = PropertyListEncoder()
+        do {
+            try context.save()
+            
+        } catch {
+            print("Save Error")
+        }
+    }
+    
+    // Persist Notes
+    func loadNotes(from request: NSFetchRequest<Note> = Note.fetchRequest()) {
         
         do {
-            let data = try encoder.encode(self.notesArray)
-            try data.write(to: self.dataFilePath!)
+            notesArray = try context.fetch(request)
         } catch {
-            print("Error")
+            print("Load Error")
         }
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Search Bar Methods
+
+extension NotesTableViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let searchText = searchBar.text!
+        let request : NSFetchRequest<Note> = Note.fetchRequest()
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+        
+        request.predicate = predicate
+        
+        let sortDescription = NSSortDescriptor(key: "title", ascending: true)
+        
+        request.sortDescriptors = [sortDescription]
+        
+        
+        loadNotes(from: request)
     }
 }
