@@ -64,7 +64,14 @@
                             <outlet property="delegate" destination="bvW-m8-QxD" id="7s4-XW-98E"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Notes on the Go" id="t6k-UK-0jn"/>
+                    <navigationItem key="navigationItem" title="Notes on the Go" id="t6k-UK-0jn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4hA-4V-mx8">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addCategoryPressed:" destination="bvW-m8-QxD" id="4SQ-J6-B3g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="MsN-kf-D2m" kind="show" identifier="ShowNoteList" id="xfj-Jm-0dg"/>
                     </connections>
@@ -107,6 +114,7 @@
                     <navigationItem key="navigationItem" title="Tag" id="Vkt-l7-MCt">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ORC-ed-YxE"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yZh-Oa-NZq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addNewNote:" destination="MsN-kf-D2m" id="D00-GM-Af5"/>
                             </connections>

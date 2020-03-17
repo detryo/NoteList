@@ -10,7 +10,8 @@ import UIKit
 
 class CategoriesViewController: UICollectionViewController {
     
-    let categoriesArray = ["Compras", "Quedada", "Ocio"]
+    var categoriesArray = [Category]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +30,22 @@ class CategoriesViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
         
-        cell.categoryLabel.text = categoriesArray[indexPath.row]
+        let category = categoriesArray[indexPath.row]
+        
+        cell.categoryLabel.text = category.title
         
         return cell
     }
     
+    // MARK: - Method CollectionView Delegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "ShowNoteList", sender: self)
     }
+    
+    // MARK: - Create New Categories
+    @IBAction func addCategoryPressed(_ sender: UIBarButtonItem) {
+        
+        
+    }
 }
-

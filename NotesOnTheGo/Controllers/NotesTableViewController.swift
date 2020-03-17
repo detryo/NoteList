@@ -135,4 +135,14 @@ extension NotesTableViewController: UISearchBarDelegate {
         
         loadNotes(from: request)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text?.count == 0 {
+            loadNotes()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }
