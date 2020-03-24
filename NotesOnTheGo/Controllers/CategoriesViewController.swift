@@ -43,9 +43,5 @@ class CategoriesViewController: UICollectionViewController {
         performSegue(withIdentifier: "ShowNoteList", sender: self)
     }
     
-    // MARK: - Create New Categories
-    @IBAction func addCategoryPressed(_ sender: UIBarButtonItem) {
-        
-        
-    }
+    
 }
