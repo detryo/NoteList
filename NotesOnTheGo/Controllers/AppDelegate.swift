@@ -15,6 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            
+        NSAttributedString.Key.foregroundColor : UIColor.black,
+        NSAttributedString.Key.font : UIFont(name: "Avenir Next", size: 24.0) ?? UIFont.systemFont(ofSize: 24.0)
+        ]
+        
         return true
     }
 

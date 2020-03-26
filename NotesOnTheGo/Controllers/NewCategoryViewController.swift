@@ -21,6 +21,8 @@ class NewCategoryViewController: UIViewController {
     let colorKeys = ["R", "G", "B", "A"]
     let imagePicker = UIImagePickerController()
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +33,7 @@ class NewCategoryViewController: UIViewController {
         repaintBackbround()
         imagePicker.delegate = self
     }
-    //
+    
     @IBAction func sliderMoved(_ sender: UISlider) {
         
         colorLabels[sender.tag].text = "\(colorKeys[sender.tag]): \(lroundf(sender.value*255.0))"
@@ -40,9 +42,20 @@ class NewCategoryViewController: UIViewController {
     
     @IBAction func savePressed(_ sender: UIButton) {
         
+        let category = Category(context: context)
+        category.title = textField.text
+        category.colorHex = UIColor(hex: hexLabel.text!)?.toHex
+        category.image = imageView.image?.pngData()
+        
+        do {
+            try context.save()
+        } catch {
+            print("Category error")
+        }
+        dismiss(animated: true, completion: nil)
     }
     
-    //
+    
     @IBAction func cancelPressed(_ sender: UIButton) {
         
        dismiss(animated: true, completion: nil)
